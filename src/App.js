@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
+import FlickrCard from './card/FlickrCard.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: []
+        };
+        const url = 'https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=true';
+        axios.get(url).then(response => {
+            this.setState({items: response.data.items});
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="header">
+                    <input className="search-box" type="text" placeholder="Search..."/>
+                </div>
+                <div className="search-results">
+                    <ul>
+                        {this.state.items.map((item, index) => <li key={index}><FlickrCard item={item}/></li>)}
+                    </ul>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default App;
