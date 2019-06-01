@@ -9,12 +9,16 @@
 }
 
 .thumbnail {
-    min-width: 240px;
+    max-width: 240px;
+    max-height: 200px;
+    width: 300px;
+    overflow: hidden;
     border-right: solid 1px #f0f0f0;
 }
 
 .thumbnail img {
-    height: 100%;
+    width: 100%;
+    min-height: 200px;
 }
 .label {
     font-style: italic;
