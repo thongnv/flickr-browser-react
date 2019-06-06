@@ -1,11 +1,13 @@
 .card-item {
     display: flex;
-    border: solid 1px #f0f0f0;
+    border: solid 1px #141414;
+    background-color: #f0f0f0;
+    border-radius: 4px;
 }
 
 .description {
     width: 100%;
-    padding-left: 10px;
+    padding: 10px;
 }
 
 .thumbnail {
