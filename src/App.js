@@ -1,7 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import rootReducer from './reducers';
+import { createStore } from 'redux';
 import FlickrCard from './card/FlickrCard.js';
+
+const store = createStore(rootReducer);
 
 class App extends React.Component {
     constructor(props) {
